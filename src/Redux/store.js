@@ -1,11 +1,11 @@
-import { configureStore } from "@reduxjs/toolkit";
+import { configureStore } from "@reduxjs/toolkit"
 
-import  loginReducer  from "./reducer/User";
-import peliculasReducer from "./reducer/peliculasReducer";
+import loginReducer from "./UserReducer"
+
 
 export const store = configureStore({
     reducer:{
         authReducer: loginReducer,
-        peliculas: peliculasReducer 
+       
     },
 })

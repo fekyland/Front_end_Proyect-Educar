@@ -3,5 +3,5 @@ export const environment = {
   // api
   BASE_API_URL: "http://localhost:3000",
  //BASE_API_URL: 'https://backmovies-production.up.railway.app',
-  IMAGES_URL: 'https://image.tmdb.org/t/p',
+ // IMAGES_URL: 'https://image.tmdb.org/t/p',
 }

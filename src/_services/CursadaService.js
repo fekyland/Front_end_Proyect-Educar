@@ -1,16 +1,16 @@
 import axios from 'axios'
 import { environment } from '../_environmets/environment'
 
-const MovieService = {} //objeto vacio
+const CourseService = {} //objeto vacio
 
-MovieService.getAllMovies = async (page = 1) => {
+MovieService.getAllCursadas = async (page = 1) => {
   //objeto.metodo
-  const apiUrl = `${environment.BASE_API_URL}/movies`
+  const apiUrl = `${environment.BASE_API_URL}/courses`
 
   return await axios.get(apiUrl)
 }
 
-MovieService.getSingleMovie = async (id) => {
+MovieService.getSingleCursada = async (id) => {
   const apiUrl = `${environment.BASE_API_URL}/movies/id/${id}`
 
   return await axios.get(apiUrl)
