@@ -7,12 +7,12 @@ TokenStorageService.logOut = () => {
 }
 
 TokenStorageService.saveToken = (token) => {
-  sessionStorage.removeItem(TOKEN_KEY)
-  sessionStorage.setItem(TOKEN_KEY, token)
+  localStorage.removeItem(TOKEN_KEY)
+  localStorage.setItem(TOKEN_KEY, token)
 }
 
 TokenStorageService.getToken = () => {
-  return sessionStorage.getItem(TOKEN_KEY)
+  return localStorage.getItem(TOKEN_KEY)
 }
 
 export default TokenStorageService

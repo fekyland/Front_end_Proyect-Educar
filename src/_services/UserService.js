@@ -1,5 +1,5 @@
 import axios from 'axios'
-import { environment } from '../_environmets/environment'
+import { environment } from '../_enviroment/environment'
 
 const UserService = {}
 
@@ -21,12 +21,17 @@ UserService.getById = async (token) => {
 
   return await axios.get(apiUrl, config)
 }
-UserService.rentMovie = async (userId, movieId) => {
+UserService.rentCursada = async (userId, movieId) => {
   try {
-    const apiURL = `${environment.BASE_API_URL}/users/${userId}/rent/${movieId}`;
-    const res = await axios.patch(apiURL);
-
-    return res.data;
+    const apiURL = `${environment.BASE_API_URL}/users/${userId}/rent/${movieId}`
+    return await axios.patch(apiURL),{
+      //hago un post a register con un body de usuario mail y password
+      name: Cursada.name,
+      email: Cursada.email,
+      title: Cursada.title,
+      description: Cursada.description,
+      video: "https://www.youtube.com/embed/"+ Cursada.video
+    }
   } catch (error) {
     console.log(error);
   }

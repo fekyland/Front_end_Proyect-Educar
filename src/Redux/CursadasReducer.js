@@ -7,26 +7,26 @@ import { useState } from 'react';
 
 
 const initialState = {
-  peliculas: [],
+  cursadas: [],
 }
 
 console.log(initialState.value)
-export const peliculasReducer = createSlice({
-  name: 'peliculas',
+export const cursadasReducer = createSlice({
+  name: 'cursadas',
   initialState,
   reducers: {
-    alquilarPeliculas: (state, action) => {
+    comprarCursadas: (state, action) => {
       //accion + login
-      state.peliculas = action.payload //state
+      state.cursadas = action.payload //state
     },
-    limpiarPeliculas: (state) => {
+    limpiarCursadas: (state) => {
       //accion + login
-      state.peliculas = [] //state
+      state.cursadas = [] //state
     },
   },
 })
 
 // Action creators are generated for each case reducer function
-export const { alquilarPeliculas, limpiarPeliculas } = peliculasReducer.actions
+export const { comprarCursadas, limpiarCursadas } = cursadasReducer.actions
 
-export default peliculasReducer.reducer
+export default cursadasReducer.reducer

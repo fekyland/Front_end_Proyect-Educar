@@ -1,0 +1,16 @@
+@mixin container-panel-user($gutter: 20px) {
+    display: flex;
+    flex-wrap: wrap;
+  
+    & > * {
+      flex: 1 0 calc(50% - #{$gutter});
+      margin-right: $gutter;
+  
+      &:nth-child(2n) {
+        margin-right: 0;
+      }
+    }
+  }
+  .container-panel-user {
+    @include two-column-grid();
+  }

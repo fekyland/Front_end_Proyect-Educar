@@ -1,7 +1,36 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
+import CursadaService from '../../_services/CursadaService'
+import Cursada from '../Cursada/Cursada'
 
 export default function CursadaList() {
+  const [cursadas, setCursadas] = useState([])
+
+  useEffect(() => {
+    getAllCursadas()
+  }, [])
+
+  const getAllCursadas = async () => {
+    try {
+      const res = await CursadaService.getAllCursadas()
+      setCursadas(Object.values(res.data.data))
+
+      //setCursadas(res.data)
+      console.log(res.data)
+    } catch (error) {
+      console.log(error.message || error)
+    }
+  }
+
   return (
-    <div><iframe width="200" height="100" src="https://www.youtube.com/embed/QOOiY0bgrlU" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></div>
+    <div className="cursada-list">
+      <div className="container pt-5 pb-5 ">
+        <h1 className="h1  mb-5 ">Cursadas</h1>
+
+        <div className="d-flex flex-wrap justify-content-center gap-5 mb-5">
+          {cursadas.length > 0 &&
+            cursadas.map((cursada) => <Cursada key={cursada.id} cursada={cursada} />)}
+        </div>
+      </div>
+    </div>
   )
 }

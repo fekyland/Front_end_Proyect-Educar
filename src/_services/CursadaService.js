@@ -1,19 +1,39 @@
 import axios from 'axios'
-import { environment } from '../_environmets/environment'
+import { environment } from '../_enviroment/environment'
 
-const CourseService = {} //objeto vacio
+const CursadaService = {} //objeto vacio
 
-MovieService.getAllCursadas = async (page = 1) => {
+
+CursadaService.getAllCursadas = async (page = 1) => {
   //objeto.metodo
-  const apiUrl = `${environment.BASE_API_URL}/courses`
+  const apiUrl = `${environment.BASE_API_URL}/cursadas`
 
   return await axios.get(apiUrl)
 }
 
-MovieService.getSingleCursada = async (id) => {
-  const apiUrl = `${environment.BASE_API_URL}/movies/id/${id}`
+CursadaService.getSingleCursada = async (id) => {
+  const apiUrl = `${environment.BASE_API_URL}/cursadas/id/${id}`
 
   return await axios.get(apiUrl)
 }
 
-export default MovieService
+CursadaService.register = async (Cursada) => {
+  const ApiUrl = `${environment.BASE_API_URL}`
+  return await axios.post(ApiUrl + '/cursadas/registercurso', {
+    //hago un post a register con un body de usuario mail y password
+    name: Cursada.name,
+    email: Cursada.email,
+    title: Cursada.title,
+    description: Cursada.description,
+    video: "https://www.youtube.com/embed/"+ Cursada.video
+  })
+}
+
+CursadaService.searchByTitle = async (valorString) => {
+  const apiUrl = `${environment.BASE_API_URL}/cursadas/search/${valorString}`
+
+  return await axios.get(apiUrl)
+}
+
+
+export default CursadaService

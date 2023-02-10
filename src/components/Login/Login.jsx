@@ -22,8 +22,10 @@ export default function Login() {
     const [formErrors, setFormErrors] = useState({})
     const [isSubmit, setIsSubmit] = useState(false)
     const dispatch = useDispatch()
+    const statuslogin = useSelector(loginuser)
+    console.log(statuslogin)
   
-  useEffect(() => {
+    useEffect(() => {
     const credentials = {
         email: formValues.email,
         password: formValues.password,
@@ -45,12 +47,11 @@ export default function Login() {
           console.log(res.data.id)
           console.log(res.data.token)
           TokenStorageService.saveToken(res.data.token)
-          //TokenStorageService.saveToken(res.data.token)    
-          localStorage.setItem("userId",res.data.id)      
-          //sessionStorage.setItem("moviesRented",JSON.stringify(res.data.movies));
+          localStorage.setItem("userId",res.data.id)
+          localStorage.setItem("userName",res.data.name)   
+          localStorage.setItem("userRole",res.data.role)
           res.data.username = credentials.email
           dispatch(loginuser(res.data))
-          //dispatch(alquilarPeliculas(res.data.movies))
         if (res.data.message === 'User Logged as SUPER_ADMIN') {
             navigate('/admin')
          } else {

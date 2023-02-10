@@ -3,7 +3,7 @@ export const validateLoginFormValues = (formValues) => {
 
    const emailPattern = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/;
    //const passwordPattern = ???
-
+   
    //email
    if (!formValues.email) {
       errors.email = "Email is required!";
@@ -18,5 +18,19 @@ export const validateLoginFormValues = (formValues) => {
       errors.password = "Password must be more than 6 characters!";
    }
 
-   return errors;
+ 
+return errors;
+};
+
+export const validateCursadaFormValues = (formValues) => {
+   const errors = {};
+
+   
+
+   if (!formValues.video) {
+      errors.video = "video link is required!";
+   } else if (formValues.video.length < 11) {
+      errors.video = "not a youtube link";
+   }
+ return errors;
 };
