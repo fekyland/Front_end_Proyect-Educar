@@ -1,13 +1,16 @@
 import { createSlice } from '@reduxjs/toolkit' //esto es un reduer
-import { useState } from 'react';
+import { useState } from 'react'
 //const pelisStorage = sessionStorage.getItem("moviesRented");
 //const movies = JSON.stringify(pelisStorage.peliculas)
 //console.log(pelisStorage)
 
-
-
 const initialState = {
-  cursadas: [],
+  //estado inicial
+  description: null,
+  email: null,
+  name: null,
+  title: null,
+  video: null,
 }
 
 console.log(initialState.value)
@@ -16,17 +19,28 @@ export const cursadasReducer = createSlice({
   initialState,
   reducers: {
     comprarCursadas: (state, action) => {
-      //accion + login
-      state.cursadas = action.payload //state
+      return {
+        ...state,
+        description: action.payload.description,
+        email: action.payload.email,
+        name: action.payload.name,
+        title: action.payload.title,
+        video: action.payload.video,
+      };
     },
     limpiarCursadas: (state) => {
-      //accion + login
-      state.cursadas = [] //state
+      return {
+        ...state,
+        description: null,
+        name: null,
+        email: null,
+        title: null,
+        video: null,
+      }
     },
   },
 })
 
-// Action creators are generated for each case reducer function
 export const { comprarCursadas, limpiarCursadas } = cursadasReducer.actions
 
 export default cursadasReducer.reducer

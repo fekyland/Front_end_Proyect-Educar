@@ -15,23 +15,33 @@ export default function UserPanel() {
         <h1>UserPanel</h1>
         <div className="row">
           <div className="col-sm-6">
-            <h1>Mis Cursadas</h1>
+            <h6>Mis Cursadas</h6>
             <div className="row">
-              <div className="col-sm-6">
-                <h2>Videos</h2>
-                <div className="row">item.video</div>
-              </div>
-              <div className="col-sm-6">
-                <h2>titulo</h2>
-                <div className="row">item.title</div>
-              </div>
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Primero</th>
+                    <th scope="col">Último</th>
+                    <th scope="col">Handle</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <th scope="row">1</th>
+                    <td>Mark</td>
+                    <td>Otto</td>
+                    <td>@mdo</td>
+                  </tr>
+                </tbody>
+              </table>
               <div className="row d-flex justify-content-center">
                 <div className="col-sm-3">
                   {' '}
                   <button
                     type="button"
                     className="btn btn-success"
-                    onClick={""}
+                    onClick={''}
                   >
                     Reprucir
                   </button>
@@ -41,18 +51,14 @@ export default function UserPanel() {
                   <button
                     type="button"
                     className="btn btn-primary"
-                    onClick={""}
+                    onClick={''}
                   >
                     Editar
                   </button>
                 </div>
                 <div className="col-sm-3">
                   {' '}
-                  <button
-                    type="button"
-                    className="btn btn-danger"
-                    onClick={""}
-                  >
+                  <button type="button" className="btn btn-danger" onClick={''}>
                     Borrar
                   </button>
                 </div>
@@ -60,23 +66,33 @@ export default function UserPanel() {
             </div>
           </div>
           <div className="col-sm-6">
-            <h1>Cursadas compradas </h1>
+            <h6>Cursadas compradas </h6>
             <div className="row">
-              <div className="col-sm-6">
-                <h2>Videos</h2>
-                <div className="row">item.video</div>
-              </div>
-              <div className="col-sm-6">
-                <h2>titulo</h2>
-                <div className="row">item.titulo</div>
-              </div>
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Primero</th>
+                    <th scope="col">Último</th>
+                    <th scope="col">Handle</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <th scope="row">1</th>
+                    <td>Mark</td>
+                    <td>Otto</td>
+                    <td>@mdo</td>
+                  </tr>
+                </tbody>
+              </table>
               <div className="row d-flex justify-content-center">
                 <div className="col-sm-3">
                   {' '}
                   <button
                     type="button"
                     className="btn btn-success"
-                    onClick={""}
+                    onClick={''}
                   >
                     Reprucir
                   </button>
@@ -86,18 +102,14 @@ export default function UserPanel() {
                   <button
                     type="button"
                     className="btn btn-primary"
-                    onClick={""}
+                    onClick={''}
                   >
                     Editar
                   </button>
                 </div>
                 <div className="col-sm-3">
                   {' '}
-                  <button
-                    type="button"
-                    className="btn btn-danger"
-                    onClick={""}
-                  >
+                  <button type="button" className="btn btn-danger" onClick={''}>
                     Borrar
                   </button>
                 </div>
@@ -106,13 +118,13 @@ export default function UserPanel() {
           </div>
 
           <div className="col-sm-12">
-          <button
-            type="button"
-            className="btn btn-success"
-            onClick={handleLogout}
-          >
-            Logout{' '}
-          </button>
+            <button
+              type="button"
+              className="btn btn-success"
+              onClick={handleLogout}
+            >
+              Logout{' '}
+            </button>
           </div>
         </div>
       </div>

@@ -32,5 +32,11 @@ export const validateCursadaFormValues = (formValues) => {
    } else if (formValues.video.length < 11) {
       errors.video = "not a youtube link";
    }
+
+   if (!formValues.price) {
+      errors.price = "precio requerido";
+   } else if (formValues.price === NaN) {
+      errors.price = "tienen que ser numeros";
+   }
  return errors;
 };

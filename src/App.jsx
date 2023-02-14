@@ -10,6 +10,8 @@ import AdminPanel from "./components/AdminPanel/AdminPanel";
 import CursadaDetail from "./components/CursadaDetail/CursadaDetail"
 import  Header  from "./components/Header/Header";
 import CursadaSearch from "./components/CursadaSearch/CursadaSearch";
+import Home from "./components/Home/Home";
+import ShopForm from "./components/ShopForm/ShopForm";
 function App() {
   
 
@@ -27,6 +29,8 @@ function App() {
        <Route path="/userpanel"element={<UserPanel/>} />
        <Route path="/adminpanel"element={<AdminPanel/>} />
        <Route path="/cursadas/search/:search"element={<CursadaSearch/>} />
+       <Route path="/home"element={<Home/>} />
+       <Route path="cursadas/shopform"element={<ShopForm/>} />
       </Routes>
       </BrowserRouter>
     </div>

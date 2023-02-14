@@ -16,7 +16,8 @@ export default function RegisterCursada() {
   const initialValues = {
     title: '',
     video: '',
-    description:''
+    description:'',
+    price:''
   }
   // hooks
   const navigate = useNavigate()
@@ -31,6 +32,7 @@ export default function RegisterCursada() {
       title: formValues.title,
       video: formValues.video,
       description: formValues.description,
+      price:formValues.price
     }
     // verificar que no hay error
     verificacion(contenido)
@@ -121,6 +123,22 @@ export default function RegisterCursada() {
             value={formValues.description}
             onChange={handleChange}
           ></textarea>
+        </div>
+        <div className="mb-3">
+          <label for="exampleFormControlInput1" className="form-label">
+            {' '}
+            Precio
+          </label>
+          <input
+            type="price"
+            name="price"
+            value={formValues.price}
+            onChange={handleChange}
+            className="form-control"
+            id="exampleFormControlInput1"
+            placeholder="Precio"
+          />
+          <div className="form-text form-text-error">{formErrors.price}</div>
         </div>
         <button type="submit" class="btn btn-primary">
           Crear Curso

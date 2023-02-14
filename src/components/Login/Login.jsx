@@ -50,6 +50,7 @@ export default function Login() {
           localStorage.setItem("userId",res.data.id)
           localStorage.setItem("userName",res.data.name)   
           localStorage.setItem("userRole",res.data.role)
+          localStorage.setItem("userMail",res.data.email)
           res.data.username = credentials.email
           dispatch(loginuser(res.data))
         if (res.data.message === 'User Logged as SUPER_ADMIN') {
@@ -81,13 +82,14 @@ export default function Login() {
   
     return (
     <div>
-    <div className="container pt-5 col-lg-3">
+    <div className="container col-lg-3 col-md-5 col-sm-5">
+     <div className="container-bkground pt-5 p-5 mt-5 border border-success rounded">
     <h2>Login</h2>
 
-    <pre className="text-start">
+    {/*<pre className="text-start">
       {JSON.stringify(formValues, undefined, 2)}
-    </pre>
-
+    </pre>*/}
+   
     <form className="text-start" noValidate onSubmit={handleSubmit}>
       <div className="mb-3">
         <label className="form-label">Email address</label>
@@ -122,6 +124,7 @@ export default function Login() {
         </button>
       </div>
     </form>
+  </div>
   </div>
   </div>
   )

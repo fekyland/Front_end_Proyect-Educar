@@ -38,14 +38,14 @@ export default function Navbar() {
 
   return (
     <div>
-      <nav className="navbar navbar-expand-lg navbar-primary bg-light fs-6">
+      <nav className="navbar navbar-expand-lg border border-success bg-light bg-gradient  fs-6 ">
         <div className="container-fluid">
           <a className="navbar-brand" href="/cursadas">
             <img
               src={logo}
               alt=""
-              width="100"
-              height="100"
+              width="50"
+              height="50"
               className="d-inline-block align-text-top"
             />
           </a>

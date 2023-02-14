@@ -2,3 +2,21 @@
     color: var(--bs-danger) !important;
     font-size: 100% !important;
 }
+$mt-size: 5rem;
+
+.mt-5 {
+  margin-top: $mt-size;
+}
+
+$padding-size: 40px;
+
+.p-5 {
+  padding: $padding-size;
+}
+.rounded {
+    border-radius: 10px;
+  }
+.container-bkground{
+    
+    background-color: beige;
+}
