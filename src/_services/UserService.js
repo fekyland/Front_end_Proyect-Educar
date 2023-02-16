@@ -21,17 +21,18 @@ UserService.getById = async (token) => {
 
   return await axios.get(apiUrl, config)
 }
-UserService.rentCursada = async (userId, movieId) => {
+UserService.buyCursada = async (userId,Id,contenido) => {
   try {
-    const apiURL = `${environment.BASE_API_URL}/users/${userId}/rent/${movieId}`
-    return await axios.patch(apiURL),{
+    const apiURL = `${environment.BASE_API_URL}/users/${userId}/rent/${Id}`
+    return await axios.patch(apiURL,{
       //hago un post a register con un body de usuario mail y password
-      name: Cursada.name,
-      email: Cursada.email,
-      title: Cursada.title,
-      description: Cursada.description,
-      video: "https://www.youtube.com/embed/"+ Cursada.video
-    }
+      id:Id,
+      name: contenido.name,
+      email: contenido.email,
+      title: contenido.title,
+      description: contenido.description,
+      video: "https://www.youtube.com/embed/"+ contenido.video
+    })
   } catch (error) {
     console.log(error);
   }

@@ -1,10 +1,12 @@
 import React, { useEffect, useState } from 'react'
 import CursadaService from '../../_services/CursadaService'
 import Cursada from '../Cursada/Cursada'
+import { useSelector } from 'react-redux'
 
 export default function CursadaList() {
   const [cursadas, setCursadas] = useState([])
-
+const user = useSelector((state) => state.authReducer)
+console.log(user)
   useEffect(() => {
     getAllCursadas()
   }, [])
@@ -12,7 +14,7 @@ export default function CursadaList() {
   const getAllCursadas = async () => {
     try {
       const res = await CursadaService.getAllCursadas()
-      setCursadas(Object.values(res.data.data))
+      setCursadas(res.data.data)
 
       //setCursadas(res.data)
       console.log(res.data)

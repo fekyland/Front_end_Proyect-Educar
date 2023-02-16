@@ -54,9 +54,9 @@ export default function Login() {
           res.data.username = credentials.email
           dispatch(loginuser(res.data))
         if (res.data.message === 'User Logged as SUPER_ADMIN') {
-            navigate('/admin')
+            navigate('/adminpanel')
          } else {
-            navigate('/userpanel')
+            navigate('/cursadas')
           }
         } catch (error) {
           console.log(error)

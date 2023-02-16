@@ -5,13 +5,23 @@ import  TokenStorageService  from "../../_services/TokenStorageService.js"
 import { useNavigate } from 'react-router-dom'
 import CursadaService from '../../_services/CursadaService'
 import { useState } from 'react'
+import { NavLink } from 'react-router-dom'
 
 export default function Navbar() {
   const userName = 'userName'
   const user = localStorage.getItem(userName)
   const userRole = 'userRole'
   const userAdmin = localStorage.getItem(userRole)
+
   const navigate = useNavigate()
+  let activeClassName = 'activeNav'
+  const setNavLinkClassName = ({ isActive }) => {
+    const className = ['nav-link', isActive ? activeClassName : undefined].join(
+      ' ',
+    )
+
+    return className
+  }
   
   console.log(user)
 
@@ -64,17 +74,14 @@ export default function Navbar() {
           <div className="collapse navbar-collapse" id="navbarSupportedContent">
             <ul className="navbar-nav me-auto mb-2 mb-lg-0">
               <li className="nav-item">
-                <a
-                  className="nav-link active"
-                  aria-current="page"
-                  href="/cursadas"
-                >
-                  Educar
-                </a>
+                
+               <NavLink to="/cursadas" className={setNavLinkClassName} end>
+          Cursadas
+          </NavLink> 
               </li>
               <li className="nav-item">
-                <a className="nav-link" href="#">
-                  Link
+                <a className="nav-link" href="/login">
+                  Login
                 </a>
               </li>
               <li className="nav-item dropdown">
@@ -102,9 +109,9 @@ export default function Navbar() {
                     <hr className="dropdown-divider" />
                   </li>
                   <li>
-                    {userAdmin === "super_admin" ? ( <a className="dropdown-item" href="/paneladmin">
+                    {userAdmin === "super_admin" ? ( <a className="dropdown-item" href="/adminpanel">
                       Admin panel
-                    </a>):( <a className="dropdown-item" href="/paneluser">
+                    </a>):( <a className="dropdown-item" href="/cursadas">
                      User panel
                     </a>)}
                   </li>

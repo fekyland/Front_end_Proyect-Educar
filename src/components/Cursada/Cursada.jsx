@@ -23,7 +23,7 @@ function Cursada({ cursada }) {
         onClick={() => getCursadaDetails(cursada)}
       >
        <div className="z-2 position-absolute p-5 rounded-3 " > <h1 className='font-size-30'>👑</h1>     </div>
-        <iframe src={cursada.video} title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+        {cursada.video}
           <div className="vote-average vote-average--movie">
             {""}
           </div>

@@ -32,7 +32,8 @@ export default function RegisterCursada() {
       title: formValues.title,
       video: formValues.video,
       description: formValues.description,
-      price:formValues.price
+      price:formValues.price,
+      
     }
     // verificar que no hay error
     verificacion(contenido)

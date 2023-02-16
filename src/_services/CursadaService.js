@@ -26,7 +26,8 @@ CursadaService.register = async (Cursada) => {
     title: Cursada.title,
     description: Cursada.description,
     video: "https://www.youtube.com/embed/"+ Cursada.video,
-    price:Cursada.price
+    price:Cursada.price,
+    
   })
 }
 
@@ -36,5 +37,25 @@ CursadaService.searchByTitle = async (valorString) => {
   return await axios.get(apiUrl)
 }
 
+CursadaService.buyCursada = async (userId,Id) => {
+  try {
+    const apiURL = `${environment.BASE_API_URL}/cursadas/${Id}/order/${userId}`
+    return await axios.post(apiURL,{
+      //hago un post a register con un body de usuario mail y password
+      buyed:userId
+    })
+  } catch (error) {
+    console.log(error);
+  }
+};
 
+CursadaSrevice.findByEmail = async (email) => {
+  try {
+    const apiUrl = `${environment.BASE_API_URL}/miscursos/${email}`
+
+  return await axios.get(apiUrl)
+  } catch (error) {
+    
+  }
+}
 export default CursadaService

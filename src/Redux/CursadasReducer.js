@@ -1,8 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit' //esto es un reduer
-import { useState } from 'react'
-//const pelisStorage = sessionStorage.getItem("moviesRented");
-//const movies = JSON.stringify(pelisStorage.peliculas)
-//console.log(pelisStorage)
+
 
 const initialState = {
   //estado inicial

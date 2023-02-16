@@ -1,29 +1,13 @@
 import React from 'react'
-import { useNavigate } from 'react-router-dom'
-import TokenStorageService from '../../_services/TokenStorageService'
 
-export default function UserPanel() {
-  const navigate = useNavigate()
+export default function AdminPanel() {
 
-  const handleLogout = () => {
-    TokenStorageService.logOut()
-    navigate('/')
-  }
+    const handleLogout = () => {
+        TokenStorageService.logOut()
+        navigate('/')
+      }
 
-
-  const getCursadaByEmail = async () => {
-    try {
-      const res = await CursadaService.getCursadaByEmail(email)
-      setCursada(res.data.data)
-      console.log('res.data.results', res.data.data)
-      console.log(cursada)
-     
-    } catch (error) {
-      console.log(error.message || error)
-    }
-  }
-
-
+      
   return (
     <div>
       <div className="container">
