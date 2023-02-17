@@ -51,7 +51,7 @@ export default function RegisterCursada() {
     try {
       const res = await CursadaService.register(contenido)
       console.log(res.data)
-      navigate('/cursos')
+      navigate('/cursadas')
     } catch (error) {
       console.log(error)
     }

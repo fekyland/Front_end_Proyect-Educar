@@ -37,25 +37,33 @@ CursadaService.searchByTitle = async (valorString) => {
   return await axios.get(apiUrl)
 }
 
-CursadaService.buyCursada = async (userId,Id) => {
+CursadaService.buyCursada = async (Id,userId) => {
   try {
     const apiURL = `${environment.BASE_API_URL}/cursadas/${Id}/order/${userId}`
-    return await axios.post(apiURL,{
-      //hago un post a register con un body de usuario mail y password
-      buyed:userId
-    })
+    return await axios.patch(apiURL)
   } catch (error) {
     console.log(error);
   }
 };
 
-CursadaSrevice.findByEmail = async (email) => {
+CursadaService.findByEmail = async (email) => {
   try {
-    const apiUrl = `${environment.BASE_API_URL}/miscursos/${email}`
+    const apiUrl = `${environment.BASE_API_URL}/cursadas/miscursos/${email}`
 
   return await axios.get(apiUrl)
   } catch (error) {
     
   }
 }
+CursadaService.findBuyersById = async (UserId) => {
+
+  const apiUrl = `${environment.BASE_API_URL}/cursadas/compradas/${UserId}`
+  return await axios.get(apiUrl)
+}
+ 
+CursadaService.checkCursada = async (id,UserId) => {
+  const apiUrl = `${environment.BASE_API_URL}/cursadas/${id}/comprobar/${UserId}`
+  return await axios.get(apiUrl)
+} 
+
 export default CursadaService

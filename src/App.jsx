@@ -9,10 +9,9 @@ import RegisterCursada from './components/RegisterCursada/RegisterCursada'
 import CursadaDetail from './components/CursadaDetail/CursadaDetail'
 import Header from './components/Header/Header'
 import CursadaSearch from './components/CursadaSearch/CursadaSearch'
-import Home from './components/Home/Home'
-import ShopForm from './components/ShopForm/ShopForm'
 import CursadaComprada from './CursadaComprada/CursadaComprada'
 import AdminPanel from './AdminPanel/AdminPanel'
+import MisCompras from './components/MisCompras/MisCompras'
 
 function App() {
   return (
@@ -20,18 +19,20 @@ function App() {
       <BrowserRouter>
         <Header />
         <Routes>
-        <Route path="cursadas/cursadacomprada/:id" element={<CursadaComprada/>} />
+         
           <Route path="/" element={<Navigate to="/cursadas" />} />
           <Route path="/cursadas" element={<CursadaList />} />
           <Route path="/cursadas/id/:id" element={<CursadaDetail />} />
-          <Route path="/login" element={<Login />} />
-          <Route path="/registeruser" element={<RegisterUser />} />
-          <Route path="/registercursada" element={<RegisterCursada />} />
-          <Route path="/userpanel" element={<UserPanel />} />
-          <Route path="/adminpanel" element={<AdminPanel />} />
+          <Route path="/cursadas/registercursada" element={<RegisterCursada />} />
           <Route path="/cursadas/search/:search" element={<CursadaSearch />} />
-          <Route path="/home" element={<Home />} />
-          <Route path="cursadas/shopform" element={<ShopForm />} />
+          <Route path="/cursadas/cursadacomprada/:id" element={<CursadaComprada/>} />
+          <Route path="/users/login" element={<Login />} />
+          <Route path="/users/registeruser" element={<RegisterUser />} />   
+          <Route path="/users/userpanel" element={<UserPanel />} />
+          <Route path="/users/adminpanel" element={<AdminPanel />} />
+          <Route path="/users/userpanel/miscompras" element={<MisCompras />} />
+
+          
         </Routes>
       </BrowserRouter>
     </div>

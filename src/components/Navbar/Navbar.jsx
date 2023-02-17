@@ -6,14 +6,16 @@ import { useNavigate } from 'react-router-dom'
 import CursadaService from '../../_services/CursadaService'
 import { useState } from 'react'
 import { NavLink } from 'react-router-dom'
+import { logout } from '../../Redux/UserReducer'
+import { useDispatch } from 'react-redux'
 
 export default function Navbar() {
   const userName = 'userName'
   const user = localStorage.getItem(userName)
   const userRole = 'userRole'
   const userAdmin = localStorage.getItem(userRole)
-
   const navigate = useNavigate()
+  const dispatch = useDispatch()
   let activeClassName = 'activeNav'
   const setNavLinkClassName = ({ isActive }) => {
     const className = ['nav-link', isActive ? activeClassName : undefined].join(
@@ -36,9 +38,10 @@ export default function Navbar() {
 
     
   const handleLogout = () => {
+    dispatch(logout())
     TokenStorageService.logOut()
     localStorage.clear()
-    //dispatch(logout())
+   
     //dispatch(limpiarCursadas())
     navigate('/cursadas')
   }
@@ -80,8 +83,12 @@ export default function Navbar() {
           </NavLink> 
               </li>
               <li className="nav-item">
-                <a className="nav-link" href="/login">
+                <a className="nav-link" href="/users/login">
                   Login
+                </a>
+              </li><li className="nav-item">
+                <a className="nav-link" href="/users/registeruser">
+                  Register
                 </a>
               </li>
               <li className="nav-item dropdown">
@@ -96,22 +103,22 @@ export default function Navbar() {
                 </a>
                 <ul className="dropdown-menu">
                   <li>
-                    <a className="dropdown-item" href="/login">
-                      Login
+                    <a className="dropdown-item" href="/cursadas/registercursada">
+                      Crear Aula
                     </a>
                   </li>
                   <li>
-                    <a className="dropdown-item" href="/registeruser">
-                      Register
+                    <a className="dropdown-item" href="/users/userpanel">
+                      Mis aulas
                     </a>
                   </li>
                   <li>
                     <hr className="dropdown-divider" />
                   </li>
                   <li>
-                    {userAdmin === "super_admin" ? ( <a className="dropdown-item" href="/adminpanel">
+                    {userAdmin === "super_admin" ? ( <a className="dropdown-item" href="/users/adminpanel">
                       Admin panel
-                    </a>):( <a className="dropdown-item" href="/cursadas">
+                    </a>):( <a className="dropdown-item" href="/users/userpanel">
                      User panel
                     </a>)}
                   </li>

@@ -15,6 +15,7 @@ console.log(user)
     try {
       const res = await CursadaService.getAllCursadas()
       setCursadas(res.data.data)
+      console.log(cursadas)
 
       //setCursadas(res.data)
       console.log(res.data)
