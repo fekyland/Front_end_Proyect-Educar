@@ -66,4 +66,15 @@ CursadaService.checkCursada = async (id,UserId) => {
   return await axios.get(apiUrl)
 } 
 
+CursadaService.deleteCursadaById = async (curso) => {
+  try {
+    const apiURL = `${environment.BASE_API_URL}/cursadas/delete/${curso._id}`;
+    const res = await axios.delete(apiURL);
+
+    return res.data;
+  } catch (error) {
+    console.log(error);
+  }
+};
+
 export default CursadaService

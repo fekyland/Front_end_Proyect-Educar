@@ -37,16 +37,7 @@ UserService.buyCursada = async (userId,Id,contenido) => {
     console.log(error);
   }
 };
-UserService.deleteMovie = async (userId, movieId) => {
-  try {
-    const apiURL = `${environment.BASE_URL}/users/${userId}/delete/${movieId}`;
-    const res = await axios.patch(apiURL);
 
-    return res.data;
-  } catch (error) {
-    console.log(error);
-  }
-};
 UserService.deleteUser = async (user) => {
   try{
      const apiUrl = `${environment.BASE_API_URL}/users/delete/${user._id}`;

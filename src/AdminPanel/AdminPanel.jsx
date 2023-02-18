@@ -1,132 +1,141 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
+import UserService from '../_services/UserService'
+import CursadaService from '../_services/CursadaService'
+import TokenStorageService from '../_services/TokenStorageService'
+import { Navigate, useNavigate } from 'react-router-dom'
+import { logout } from '../Redux/UserReducer'
+import { useDispatch } from 'react-redux'
 
-export default function AdminPanel() {
 
-    const handleLogout = () => {
-        TokenStorageService.logOut()
-        navigate('/')
-      }
+export default function Admin() {
+  const navigate = useNavigate()
+  const token = TokenStorageService.getToken()
+  const dispatch = useDispatch()
+  
+  const [cursadas, setCursadas] = useState([])
+  const [users, setUsers] = useState([])
+  const Id = `${cursadas.id}`
 
-      
+  console.log(token)
+  useEffect(() => {
+    getAllUsers(token)
+    getAllCursadas()
+ 
+  }, [])
+ 
+ 
+ 
+ 
+  // functions definition
+  const getAllUsers = async () => {
+    const res = await UserService.getAllUsers(token)
+    try {
+      setUsers(res.data.data)
+      console.log(res)
+      console.log(setUsers)
+    } catch (error) {
+      console.log(error.message || error)
+    }
+  }
+  const getAllCursadas = async () => {
+    const res = await CursadaService.getAllCursadas()
+    try {
+      console.log('res.data.results', res.data.results)
+      setCursadas(res.data.results)
+    } catch (error) {}
+  }
+
+  const handleDelete = async (userToDelete) => {
+    const res = await UserService.deleteUser(userToDelete)
+    console.log(res)
+    await getAllUsers(token)
+    console.log(users)
+  }
+
+const handleDeleteCursada = async (cursadaToDelete) => {
+    const res = await CursadaService.deleteCursadaById(cursadaToDelete)
+    console.log(res)
+    await getAllCursadas(token)
+    console.log(cursadas)
+  }
+  const handleLogout = () => {
+    TokenStorageService.logOut()
+    dispatch(logout())
+    navigate('/cursadas')
+    navigate('/')
+  }
+ const onHandleVerCursada = (curso) =>{
+    navigate(`/cursadas/cursadacomprada/${curso._id}`)
+ }
   return (
     <div>
-      <div className="container">
-        <h1>UserPanel</h1>
-        <div className="row">
-          <div className="col-sm-6">
-            <h6>Mis Cursadas</h6>
-            <div className="row">
-              <table class="table">
-                <thead>
-                  <tr>
-                    <th scope="col">#</th>
-                    <th scope="col">Primero</th>
-                    <th scope="col">Último</th>
-                    <th scope="col">Handle</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <th scope="row">1</th>
-                    <td>Mark</td>
-                    <td>Otto</td>
-                    <td>@mdo</td>
-                  </tr>
-                </tbody>
-              </table>
-              <div className="row d-flex justify-content-center">
-                <div className="col-sm-3">
-                  {' '}
-                  <button
-                    type="button"
-                    className="btn btn-success"
-                    onClick={''}
-                  >
-                    Reprucir
-                  </button>
-                </div>
-                <div className="col-sm-3">
-                  {' '}
-                  <button
-                    type="button"
-                    className="btn btn-primary"
-                    onClick={''}
-                  >
-                    Editar
-                  </button>
-                </div>
-                <div className="col-sm-3">
-                  {' '}
-                  <button type="button" className="btn btn-danger" onClick={''}>
-                    Borrar
-                  </button>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div className="col-sm-6">
-            <h6>Cursadas compradas </h6>
-            <div className="row">
-              <table class="table">
-                <thead>
-                  <tr>
-                    <th scope="col">#</th>
-                    <th scope="col">Primero</th>
-                    <th scope="col">Último</th>
-                    <th scope="col">Handle</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <th scope="row">1</th>
-                    <td>Mark</td>
-                    <td>Otto</td>
-                    <td>@mdo</td>
-                  </tr>
-                </tbody>
-              </table>
-              <div className="row d-flex justify-content-center">
-                <div className="col-sm-3">
-                  {' '}
-                  <button
-                    type="button"
-                    className="btn btn-success"
-                    onClick={''}
-                  >
-                    Reprucir
-                  </button>
-                </div>
-                <div className="col-sm-3">
-                  {' '}
-                  <button
-                    type="button"
-                    className="btn btn-primary"
-                    onClick={''}
-                  >
-                    Editar
-                  </button>
-                </div>
-                <div className="col-sm-3">
-                  {' '}
-                  <button type="button" className="btn btn-danger" onClick={''}>
-                    Borrar
-                  </button>
-                </div>
-              </div>
-            </div>
-          </div>
+      <h1>Panel adminstrador</h1>
 
-          <div className="col-sm-12">
-            <button
-              type="button"
-              className="btn btn-success"
-              onClick={handleLogout}
-            >
-              Logout{' '}
-            </button>
+      <div>
+       
+
+      <button type="button" class="btn btn-success" onClick={handleLogout}>
+        Logout{' '}
+      </button>
+      <h2>Usuarios</h2>
+
+      <div>
+        {users?.map((user) => (
+          <div className="container" key={user._id}>
+            <div className="row">
+              <div className="col">User: {user.name}</div>
+              <div className="col">Mail: {user.email}</div>
+              <div className="col">Role: {user.role}</div>
+              <div className="col admin-buttons">
+                <button
+                  type="button"
+                  className="btn btn-danger"
+                  onClick={() => {
+                    handleDelete(user)
+                  }}
+                >
+                  borrar
+                </button>
+              </div>
+            </div>
           </div>
-        </div>
+        ))}
       </div>
+
+       <h2>Cursadas</h2>
+      {cursadas?.map((curso) => (
+          <div className="container" key={curso._id}>
+            <div className="row">
+              <div className="col">User: {curso.email}</div>
+              <div className="col">Titulo: {curso.title}</div>
+              <div className="col admin-buttons">
+                <button
+                  type="button"
+                  className="btn btn-danger"
+                  onClick={() => {
+                    handleDeleteCursada(curso)
+                  }}
+                >
+                  borrar
+                </button>
+                
+              </div>
+              <div className="col-2 admin-buttons">
+                <button
+                  type="button"
+                  className="btn btn-success"
+                  onClick={() => {
+                   onHandleVerCursada(curso)
+                  }}
+                >
+                  ver
+                </button>
+                
+              </div>
+            </div>
+          </div>
+        ))}
+                </div>
     </div>
   )
 }

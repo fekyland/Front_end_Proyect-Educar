@@ -14,7 +14,8 @@ console.log(user)
   const getAllCursadas = async () => {
     try {
       const res = await CursadaService.getAllCursadas()
-      setCursadas(res.data.data)
+      console.log(res)
+      setCursadas(res.data.results)
       console.log(cursadas)
 
       //setCursadas(res.data)
