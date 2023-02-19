@@ -1,7 +1,7 @@
 import React from 'react'
 import logo from '../../assets/albert-einstein.svg'
 import { useSelector } from 'react-redux'
-import  TokenStorageService  from "../../_services/TokenStorageService.js"
+import TokenStorageService from '../../_services/TokenStorageService.js'
 import { useNavigate } from 'react-router-dom'
 import CursadaService from '../../_services/CursadaService'
 import { useState } from 'react'
@@ -10,12 +10,14 @@ import { logout } from '../../Redux/UserReducer'
 import { useDispatch } from 'react-redux'
 
 export default function Navbar() {
+  const { username, status, type } = useSelector((state) => state.authReducer)
   const userName = 'userName'
   const user = localStorage.getItem(userName)
   const userRole = 'userRole'
   const userAdmin = localStorage.getItem(userRole)
   const navigate = useNavigate()
   const dispatch = useDispatch()
+
   let activeClassName = 'activeNav'
   const setNavLinkClassName = ({ isActive }) => {
     const className = ['nav-link', isActive ? activeClassName : undefined].join(
@@ -24,30 +26,24 @@ export default function Navbar() {
 
     return className
   }
-  
+
   console.log(user)
 
+  const [title, setTitle] = useState('')
+  console.log(title)
+  const handleSubmit = (e) => {
+    e.preventDefault()
+    navigate(`/cursadas/search/${title}`)
+  }
 
-
-    const [title, setTitle] = useState("");
-   console.log(title)
-    const handleSubmit = (e) => {
-      e.preventDefault()
-      navigate(`/cursadas/search/${title}`)
-    };
-
-    
   const handleLogout = () => {
     dispatch(logout())
     TokenStorageService.logOut()
     localStorage.clear()
-   
+
     //dispatch(limpiarCursadas())
     navigate('/cursadas')
   }
-
-
-
 
   return (
     <div>
@@ -77,53 +73,49 @@ export default function Navbar() {
           <div className="collapse navbar-collapse" id="navbarSupportedContent">
             <ul className="navbar-nav me-auto mb-2 mb-lg-0">
               <li className="nav-item">
-                
-               <NavLink to="/cursadas" className={setNavLinkClassName} end>
-          Cursadas
-          </NavLink> 
+                <NavLink to="/cursadas" className={setNavLinkClassName} end>
+                  Cursadas
+                </NavLink>
+              </li>
+
+              <li className="nav-item">
+                {user ? null : (<a className="nav-link" href="/users/login">
+                    Login
+                  </a>
+                  
+                )}
               </li>
               <li className="nav-item">
-                <a className="nav-link" href="/users/login">
-                  Login
-                </a>
-              </li><li className="nav-item">
-                <a className="nav-link" href="/users/registeruser">
-                  Register
-                </a>
+              {user ? null : (<a className="nav-link" href="/users/login">
+                    Register
+                  </a>
+                  
+                )}
               </li>
-              <li className="nav-item dropdown">
-                <a
-                  className="nav-link dropdown-toggle"
-                  href="#"
-                  role="button"
-                  data-bs-toggle="dropdown"
-                  aria-expanded="false"
-                >
-                  Usuarios
-                </a>
-                <ul className="dropdown-menu">
-                  <li>
-                    <a className="dropdown-item" href="/cursadas/registercursada">
-                      Crear Aula
-                    </a>
-                  </li>
-                  <li>
-                    <a className="dropdown-item" href="/users/userpanel">
-                      Mis aulas
-                    </a>
-                  </li>
-                  <li>
-                    <hr className="dropdown-divider" />
-                  </li>
-                  <li>
-                    {userAdmin === "super_admin" ? ( <a className="dropdown-item" href="/users/adminpanel">
-                      Admin panel
-                    </a>):( <a className="dropdown-item" href="/users/userpanel">
-                     User panel
-                    </a>)}
-                  </li>
-                </ul>
+              <li className="nav-item">
+                {status ? (
+                  <a className="nav-link" href="/users/registercursada">
+                    Crear tu Aula
+                  </a>
+                ) : (
+                  <a className="nav-link" href="/users/login">
+                    Crea tu Aula
+                  </a>
+                )}
               </li>
+              <li>
+                {userAdmin === 'super_admin' ? (
+                  <a className="nav-link" href="/users/adminpanel">
+                    Admin panel
+                  </a>
+                ) : (
+                  ""
+                )}
+              </li>
+              {userRole === 'user' ? (""
+             ):( <a className="nav-link" href="/users/userpanel">
+             User panel
+           </a>)}
               <li className="nav-item">
                 <a className="nav-link ">Bienvenido {user}</a>
               </li>
@@ -140,32 +132,37 @@ export default function Navbar() {
                 aria-label="Search"
                 onChange={(e) => setTitle(e.target.value)}
               />
-              <button className="btn btn-outline-success" type="submit" onClick={handleSubmit}>
+              <button
+                className="btn btn-outline-success"
+                type="submit"
+                onClick={handleSubmit}
+              >
                 Search
               </button>
               <ul className="navbar-nav me-auto mb-2 mb-lg-0">
-                {user ?(
+                {user ? (
                   <>
-              <li className="nav-item">
-              <a className="nav-link "></a>
-              </li>
-              <li className="nav-item">
-              <a className="nav-link" onClick={() => handleLogout()} >Logout</a>
-              </li>
-              </>
-              ):(
-                <>
-                 <li className="nav-item">
-              <a className="nav-link "></a>
-              </li>
-              <li className="nav-item">
-              <a className="nav-link "></a>
-              </li>
-              </>)
-              }
-            </ul>
+                    <li className="nav-item">
+                      <a className="nav-link "></a>
+                    </li>
+                    <li className="nav-item">
+                      <a className="nav-link" onClick={() => handleLogout()}>
+                        Logout
+                      </a>
+                    </li>
+                  </>
+                ) : (
+                  <>
+                    <li className="nav-item">
+                      <a className="nav-link "></a>
+                    </li>
+                    <li className="nav-item">
+                      <a className="nav-link "></a>
+                    </li>
+                  </>
+                )}
+              </ul>
             </form>
-          
           </div>
         </div>
       </nav>

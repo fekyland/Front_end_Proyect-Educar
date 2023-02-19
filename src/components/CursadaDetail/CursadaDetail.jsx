@@ -225,7 +225,7 @@ export default function CursadaDetail() {
                               className="btn btn-info btn-block btn-lg"
                             >
                               <div className="d-flex justify-content-between">
-                                <span>{cursada.price}</span>
+                               
                                 <button onClick={handleComprar}>
                                   Checkout{''}
                                   <i className="fas fa-long-arrow-alt-right ms-2"></i>

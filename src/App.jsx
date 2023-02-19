@@ -12,6 +12,8 @@ import CursadaSearch from './components/CursadaSearch/CursadaSearch'
 import CursadaComprada from './CursadaComprada/CursadaComprada'
 import AdminPanel from './AdminPanel/AdminPanel'
 import MisCompras from './components/MisCompras/MisCompras'
+import ReactYoutube from './components/ReactYoutube/ReactYoutube'
+
 
 function App() {
   return (
@@ -31,7 +33,8 @@ function App() {
           <Route path="/users/userpanel" element={<UserPanel />} />
           <Route path="/users/adminpanel" element={<AdminPanel />} />
           <Route path="/users/userpanel/miscompras" element={<MisCompras />} />
-
+          <Route path="/cursadas/reactyoutube" element={<ReactYoutube />} />
+          
           
         </Routes>
       </BrowserRouter>

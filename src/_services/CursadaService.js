@@ -25,7 +25,7 @@ CursadaService.register = async (Cursada) => {
     email: Cursada.email,
     title: Cursada.title,
     description: Cursada.description,
-    video: "https://www.youtube.com/embed/"+ Cursada.video,
+    video: Cursada.video,
     price:Cursada.price,
     
   })
