@@ -76,7 +76,7 @@ export default function Navbar() {
             <ul className="navbar-nav me-auto mb-2 mb-lg-0">
               <li className="nav-item">
                 <NavLink to="/cursadas" className={setNavLinkClassName} end>
-                  Cursadas
+                  Courses
                 </NavLink>
               </li>
 
@@ -98,7 +98,7 @@ export default function Navbar() {
                 {status && (
                  
                   <NavLink to="/cursadas/registercursada" className={setNavLinkClassName} end>
-                  Crea tu Aula
+                  Make your Classroom
                 </NavLink>
                 ) }
               </li>
@@ -127,7 +127,7 @@ export default function Navbar() {
               <input
                 className="form-control me-2"
                 type="text"
-                placeholder="Ingresa la busqueda"
+                placeholder="Find my course"
                 value={title}
                 aria-label="Search"
                 onChange={(e) => setTitle(e.target.value)}

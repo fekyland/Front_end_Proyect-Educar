@@ -42,7 +42,7 @@ export default function RegisterUser() {
       const res = await AuthService.register(credentials)
       console.log(res.data)
       TokenStorageService.getToken(res.data.token)
-      navigate('/userpanel')
+      navigate('/users/login')
     } catch (error) {
       console.log(error)
     }

@@ -78,7 +78,7 @@ export default function UpdateCursadas() {
         console.log("entre a actualizar")
       const res = await CursadaService.updateData(contenido)
       console.log(res.data)
-      navigate('/cursadas')
+      navigate('/users/userpanel')
     } catch (error) {
       console.log(error)
     }

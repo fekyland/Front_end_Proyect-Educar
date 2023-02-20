@@ -11,6 +11,7 @@ const userName = 'userName';
 const localMail = localStorage.getItem(userMail)
 console.log(userMail)
 const localName = localStorage.getItem(userName)
+console.log(userName)
 export default function RegisterCursada() {
 
   const initialValues = {
@@ -51,7 +52,7 @@ export default function RegisterCursada() {
     try {
       const res = await CursadaService.register(contenido)
       console.log(res.data)
-      navigate('/cursadas')
+      navigate('/users/userpanel')
     } catch (error) {
       console.log(error)
     }
