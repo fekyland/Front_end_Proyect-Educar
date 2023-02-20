@@ -88,15 +88,7 @@ export default function CursadaDetail() {
                             </p>
                             <p className="mb-0">{cursada.description}</p>
                           </div>
-                          <div>
-                            <p className="mb-0">
-                              <span className="text-muted">precio:</span>{' '}
-                              <a href="#!" className="text-body">
-                                {cursada.price}{' '}
-                                <i className="fas fa-angle-down mt-1"></i>
-                              </a>
-                            </p>
-                          </div>
+                        
                         </div>
                       </div>
                       <div className="col-lg-5">
@@ -159,7 +151,6 @@ export default function CursadaDetail() {
                                       className="form-control form-control-lg"
                                       placeholder="MM/YYYY"
                                       size="7"
-                                      id="exp"
                                       minlength="7"
                                       maxlength="7"
                                     />

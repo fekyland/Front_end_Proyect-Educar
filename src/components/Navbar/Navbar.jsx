@@ -81,16 +81,16 @@ export default function Navbar() {
               </li>
 
               <li className="nav-item">
-                {user ? null : (<a className="nav-link" href="/users/login">
-                    Login
-                  </a>
+                {user ? null : (<NavLink to="/users/login" className={setNavLinkClassName} end>
+                  Login
+                </NavLink>
                   
                 )}
               </li>
               <li className="nav-item">
-              {user ? null : (<a className="nav-link" href="/users/registeruser">
-                    Register
-                  </a>
+              {user ? null : (<NavLink to="/users/registeruser" className={setNavLinkClassName} end>
+                  Register
+                </NavLink>
                   
                 )}
               </li>
