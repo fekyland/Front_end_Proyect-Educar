@@ -6,13 +6,19 @@ import CursadaService from '../../_services/CursadaService.js'
 
 
 
-const userMail = 'userMail';
-const userName = 'userName';
-const localMail = localStorage.getItem(userMail)
-console.log(userMail)
-const localName = localStorage.getItem(userName)
-console.log(userName)
+
+
 export default function RegisterCursada() {
+  
+  
+ 
+  const userName = 'userName'
+  const user = localStorage.getItem(userName)
+  
+  const userMail = 'userMail'
+  const mail = localStorage.getItem(userMail)
+
+
 
   const initialValues = {
     title: '',
@@ -28,8 +34,8 @@ export default function RegisterCursada() {
   const [isSubmit, setIsSubmit] = useState(false)
   useEffect(() => {
     const contenido = {
-      email: localMail,
-      name: localName,
+      email: mail,
+      name: user,
       title: formValues.title,
       video: formValues.video,
       description: formValues.description,

@@ -127,7 +127,7 @@ export default function Navbar() {
               <input
                 className="form-control me-2"
                 type="text"
-                placeholder="Find my course"
+                placeholder="Find my courses"
                 value={title}
                 aria-label="Search"
                 onChange={(e) => setTitle(e.target.value)}
