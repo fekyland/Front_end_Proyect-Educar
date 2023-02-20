@@ -13,8 +13,10 @@ export default function Navbar() {
   const { username, status, type } = useSelector((state) => state.authReducer)
   const userName = 'userName'
   const user = localStorage.getItem(userName)
+
   const userRole = 'userRole'
   const userAdmin = localStorage.getItem(userRole)
+  
   const navigate = useNavigate()
   const dispatch = useDispatch()
 
@@ -86,36 +88,34 @@ export default function Navbar() {
                 )}
               </li>
               <li className="nav-item">
-              {user ? null : (<a className="nav-link" href="/users/login">
+              {user ? null : (<a className="nav-link" href="/users/registeruser">
                     Register
                   </a>
                   
                 )}
               </li>
               <li className="nav-item">
-                {status ? (
-                  <a className="nav-link" href="/users/registercursada">
-                    Crear tu Aula
-                  </a>
-                ) : (
-                  <a className="nav-link" href="/users/login">
-                    Crea tu Aula
-                  </a>
+                {status && (
+                 
+                  <NavLink to="/cursadas/registercursada" className={setNavLinkClassName} end>
+                  Crea tu Aula
+                </NavLink>
+                ) }
+              </li>
+              <li>
+                {userAdmin === 'super_admin' && (
+                   <NavLink to="/users/adminpanel" className={setNavLinkClassName} end>
+                   Admin panel
+                 </NavLink>
                 )}
               </li>
               <li>
-                {userAdmin === 'super_admin' ? (
-                  <a className="nav-link" href="/users/adminpanel">
-                    Admin panel
-                  </a>
-                ) : (
-                  ""
-                )}
-              </li>
-              {userRole === 'user' ? (""
-             ):( <a className="nav-link" href="/users/userpanel">
-             User panel
-           </a>)}
+              {userAdmin === 'user' && (
+                <NavLink to="/users/userpanel" className={setNavLinkClassName} end>
+                UserPanel
+              </NavLink>
+              )}
+           </li>
               <li className="nav-item">
                 <a className="nav-link ">Bienvenido {user}</a>
               </li>

@@ -6,19 +6,18 @@ import Cursada from '../Cursada/Cursada'
 
 
 export default function CursadaSearch({}) {
-    const title = useParams()
+    const { search }= useParams()
  const [cursadas, setCursadas] = useState({})
-console.log(title)
-const valorString = title.search
-console.log(valorString)
+
+
 console.log(cursadas)
  useEffect(() => {
-    searchByTitle(valorString)
+    searchByTitle(search)
  }, [])
  
-    const searchByTitle = async (valorString) => {
+    const searchByTitle = async (search) => {
         try {
-          const res = await CursadaService.searchByTitle(valorString)
+          const res = await CursadaService.searchByTitle(search)
           setCursadas(res.data.data)
           console.log('res.data.data', res.data)
         } catch (error) {

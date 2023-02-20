@@ -17,16 +17,31 @@ CursadaService.getSingleCursada = async (id) => {
   return await axios.get(apiUrl)
 }
 
-CursadaService.register = async (Cursada) => {
+CursadaService.register = async (cursada) => {
   const ApiUrl = `${environment.BASE_API_URL}`
   return await axios.post(ApiUrl + '/cursadas/registercurso', {
     //hago un post a register con un body de usuario mail y password
-    name: Cursada.name,
-    email: Cursada.email,
-    title: Cursada.title,
-    description: Cursada.description,
-    video: Cursada.video,
-    price:Cursada.price,
+    name: cursada.name,
+    email: cursada.email,
+    title: cursada.title,
+    description: cursada.description,
+    video: `https://www.youtube.com/embed/` + cursada.video,
+    price: cursada.price,
+    
+  })
+}
+
+CursadaService.updateData = async (cursada) => {
+  const ApiUrl = `${environment.BASE_API_URL}`
+  return await axios.put(ApiUrl + '/cursadas/updatecurso', {
+    //hago un post a register con un body de usuario mail y password
+    id:cursada.id,
+    name: cursada.name,
+    email: cursada.email,
+    title: cursada.title,
+    description: cursada.description,
+    video: `https://www.youtube.com/embed/` + cursada.video,
+    price:cursada.price,
     
   })
 }

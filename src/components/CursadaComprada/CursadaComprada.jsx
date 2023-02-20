@@ -1,15 +1,12 @@
 import React from 'react'
 import { useEffect,useState } from 'react'
-import CursadaService from '../_services/CursadaService'
+import CursadaService from '../../_services/CursadaService'
 import { useParams } from 'react-router-dom'
-import { isFirstDayOfMonth } from 'date-fns'
-export default function CursadaComprada() {
- 
- 
-  const idValue = useParams()
- 
-  const idString = idValue.id
 
+export default function CursadaComprada() {
+
+  const idValue = useParams()
+  const idString = idValue.id
   const [cursada, setCursada] = useState({})
 
   useEffect(() => {

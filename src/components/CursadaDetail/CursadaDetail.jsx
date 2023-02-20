@@ -35,14 +35,11 @@ export default function CursadaDetail() {
       console.log(error.message || error)
     }
   }
-  const handleComprar = (UserId, id) => {
-    //navigate('/cursadas/vercursada')
-    if (userState === false) {
-      navigate(`/users/login`)
-    } else {
+  const handleComprar = () => {
+    console.log("comprando..")
       buyCursada(UserId, id)
       navigate(`/cursadas/cursadacomprada/${cursada._id}`)
-    }
+    
   }
   const buyCursada = async () => {
     try {
@@ -52,21 +49,8 @@ export default function CursadaDetail() {
       console.log(error.message || error)
     }
   }
-  const getYear = (date) => format(Date.parse(date), 'yyyy')
-  {
-    /*const handleAlquilar = () => {
-    if(userState.status){
-      rentCursada(UserId,id)
-
-    }else {
-      setErrorLogin(true)
-      setTimeout(() => {
-        setErrorLogin(false)
-      }, 3500);
-    }
-   
-  }*/
-  }
+ 
+  
   const cursadasRed = useSelector((state) => state.cursadas)
   console.log(cursadasRed)
   console.log(typeof cursada.video)
@@ -247,18 +231,5 @@ export default function CursadaDetail() {
   )
 }
 
-{
-  /* <div className="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
-        <div className="col-auto d-none  d-lg-block">
-        <iframe width="560" height="315" src={cursada.video} title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-      </div>
-      <div class="col p-4 d-flex flex-column position-static">
-        <strong class="d-inline-block mb-2 text-primary">Autor@{cursada.name}</strong>
-        <h3 class="mb-0">{cursada.title}</h3>
-        <div class="mb-1 text-muted">Nov 12</div>
-        <p class="card-text mb-auto">{cursada.description}</p>
-        <a href="#" class="stretched-link" >precio: {cursada.price} </a>
-        </div>
-     </div>
-  <button type="button" href="/cursadas/shopform" class="btn btn-success" onClick={handleClick}>Agregar al carrito</button>*/
-}
+
+  

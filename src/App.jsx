@@ -9,10 +9,12 @@ import RegisterCursada from './components/RegisterCursada/RegisterCursada'
 import CursadaDetail from './components/CursadaDetail/CursadaDetail'
 import Header from './components/Header/Header'
 import CursadaSearch from './components/CursadaSearch/CursadaSearch'
-import CursadaComprada from './CursadaComprada/CursadaComprada'
+import CursadaComprada from './components/CursadaComprada/CursadaComprada'
 import AdminPanel from './AdminPanel/AdminPanel'
 import MisCompras from './components/MisCompras/MisCompras'
 import ReactYoutube from './components/ReactYoutube/ReactYoutube'
+
+import UpdateCursadas from './components/UpdateCursadas/UpdateCursadas'
 
 
 function App() {
@@ -24,6 +26,8 @@ function App() {
          
           <Route path="/" element={<Navigate to="/cursadas" />} />
           <Route path="/cursadas" element={<CursadaList />} />
+          <Route path="/cursadas/reactyoutube" element={<ReactYoutube />} />
+          <Route path="/cursadas/updatecursada/:id" element={<UpdateCursadas/>} />
           <Route path="/cursadas/id/:id" element={<CursadaDetail />} />
           <Route path="/cursadas/registercursada" element={<RegisterCursada />} />
           <Route path="/cursadas/search/:search" element={<CursadaSearch />} />
@@ -33,7 +37,7 @@ function App() {
           <Route path="/users/userpanel" element={<UserPanel />} />
           <Route path="/users/adminpanel" element={<AdminPanel />} />
           <Route path="/users/userpanel/miscompras" element={<MisCompras />} />
-          <Route path="/cursadas/reactyoutube" element={<ReactYoutube />} />
+        
           
           
         </Routes>
