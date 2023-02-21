@@ -60,6 +60,7 @@ const handleDeleteCursada = async (cursadaToDelete) => {
   }
   const handleLogout = () => {
     TokenStorageService.logOut()
+    localStorage.clear()
     dispatch(logout())
     navigate('/cursadas')
     navigate('/')
