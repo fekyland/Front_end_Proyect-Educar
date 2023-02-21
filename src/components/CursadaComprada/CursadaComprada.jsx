@@ -31,7 +31,7 @@ export default function CursadaComprada() {
       
 <div class="card ">
   <div class="embed-responsive embed-responsive-16by9 ">
- <iframe width="800" height="600" src={cursada.video} title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+ <iframe width="100%" height="600" src={cursada.video} title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
   </div>
   <div class="card-body">
     <h5 class="card-title ">{cursada.title}</h5>

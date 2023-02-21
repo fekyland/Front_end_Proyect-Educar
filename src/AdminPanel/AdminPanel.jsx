@@ -69,7 +69,7 @@ const handleDeleteCursada = async (cursadaToDelete) => {
  }
   return (
     <div>
-      <h1>Panel adminstrador</h1>
+      <h1>Admin dashboard</h1>
 
       <div>
        
@@ -77,19 +77,20 @@ const handleDeleteCursada = async (cursadaToDelete) => {
       <button type="button" class="btn btn-success" onClick={handleLogout}>
         Logout{' '}
       </button>
-      <h2>Usuarios</h2>
+      <h2>Users</h2>
 
-      <div>
+      <div className='border-primary'>
         {users?.map((user) => (
-          <div className="container" key={user._id}>
-            <div className="row">
+          <div className="container-fluid" key={user._id}>
+            <div className="row ">
               <div className="col">User: {user.name}</div>
               <div className="col">Mail: {user.email}</div>
               <div className="col">Role: {user.role}</div>
               <div className="col admin-buttons">
                 <button
+                  
                   type="button"
-                  className="btn btn-danger"
+                  className="btn btn-danger "
                   onClick={() => {
                     handleDelete(user)
                   }}
@@ -102,7 +103,7 @@ const handleDeleteCursada = async (cursadaToDelete) => {
         ))}
       </div>
 
-       <h2>Cursadas</h2>
+       <h2>Courses</h2>
       {cursadas?.map((curso) => (
           <div className="container" key={curso._id}>
             <div className="row">

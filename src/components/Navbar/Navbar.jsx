@@ -3,7 +3,6 @@ import logo from '../../assets/albert-einstein.svg'
 import { useSelector } from 'react-redux'
 import TokenStorageService from '../../_services/TokenStorageService.js'
 import { useNavigate } from 'react-router-dom'
-import CursadaService from '../../_services/CursadaService'
 import { useState } from 'react'
 import { NavLink } from 'react-router-dom'
 import { logout } from '../../Redux/UserReducer'
@@ -50,9 +49,9 @@ export default function Navbar() {
   }
 
   return (
-    <div>
-      <nav className="navbar navbar-expand-lg border border-success bg-light bg-gradient  fs-6 ">
-        <div className="container-fluid">
+    <div className=''>
+      <nav className="navbar navbar-expand-lg  bg-white bg-gradient  fs-6 ">
+        <div className="container-fluid ">
           <a className="navbar-brand" href="/cursadas">
             <img
               src={logo}

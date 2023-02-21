@@ -69,7 +69,8 @@ export default function RegisterUser() {
 
   return (
     <div>
-      <div className="container pt-5 col-lg-3">
+      <div className="container col-lg-3 col-md-5 col-sm-5">
+      <div className="container -bkground pt-5 p-5 mt-5 border rounded">
         <h2>Register</h2>
         <form className="text-start" noValidate onSubmit={handleSubmit}>
           <div className="mb-3">
@@ -117,6 +118,7 @@ export default function RegisterUser() {
           </div>
         </form>
       </div>
+    </div>
     </div>
   )
 }

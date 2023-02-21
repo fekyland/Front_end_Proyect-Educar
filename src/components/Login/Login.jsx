@@ -83,7 +83,7 @@ export default function Login() {
     return (
     <div>
     <div className="container col-lg-3 col-md-5 col-sm-5">
-     <div className="container-bkground pt-5 p-5 mt-5 border border-success rounded">
+     <div className="container-bkground pt-5 p-5 mt-5 border rounded">
     <h2>Login</h2>
 
     {/*<pre className="text-start">

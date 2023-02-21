@@ -1,25 +1,21 @@
 import React from 'react'
 import { useState, useEffect } from 'react'
 import CursadaService from '../../_services/CursadaService.js'
-import { environment } from '../../_enviroment/environment.js'
-import { format } from 'date-fns'
 import './CursadaDetail.scss'
 import { useParams } from 'react-router-dom'
-import UserService from '../../_services/UserService'
 import { useNavigate } from 'react-router-dom'
-import { comprarCursadas } from '../../Redux/CursadasReducer.js'
-import { useDispatch, useSelector } from 'react-redux'
-import { NavLink } from 'react-router-dom'
+
+
 
 export default function CursadaDetail() {
-  const dispatch = useDispatch()
+
   const navigate = useNavigate()
   const [cursada, setCursada] = useState({})
   const { id } = useParams()
   const usuario = 'userId'
   const UserId = localStorage.getItem(usuario)
-  const cursadas = useSelector(comprarCursadas)
-  const userState = useSelector((state) => state.authReducer)
+
+
 
   useEffect(() => {
     getSingleCursada()
@@ -51,9 +47,8 @@ export default function CursadaDetail() {
   }
  
   
-  const cursadasRed = useSelector((state) => state.cursadas)
-  console.log(cursadasRed)
-  console.log(typeof cursada.video)
+ 
+  
 
   return (
     <div>
@@ -76,15 +71,16 @@ export default function CursadaDetail() {
                         <div className="d-flex justify-content-between align-items-center mb-4 ">
                           <div>
                             <p className="mb-1  ">
+                            <div className="embed-responsive embed-responsive-16by9">
                               <iframe
-                                width="560"
-                                height="315"
                                 src={cursada.video}
                                 title="YouTube video player"
                                 frameborder="0"
                                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                                 allowfullscreen
+                                style={{ width: '100%', height: '400px' }}
                               ></iframe>
+                              </div>
                             </p>
                             <p className="mb-0">{cursada.description}</p>
                           </div>
