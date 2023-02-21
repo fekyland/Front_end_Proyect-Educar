@@ -17,6 +17,8 @@ export default function Navbar() {
   const userRole = 'userRole'
   const userAdmin = localStorage.getItem(userRole)
   
+  const userIdent = 'userId'
+  const userId = localStorage.getItem(userIdent)
   const navigate = useNavigate()
   const dispatch = useDispatch()
 
@@ -88,7 +90,7 @@ export default function Navbar() {
                 )}
               </li>
               <li className="nav-item">
-              {user ? null : (<NavLink to="/users/registeruser" className={setNavLinkClassName} end>
+              {user ? null : (<NavLink to="/users/register" className={setNavLinkClassName} end>
                   Register
                 </NavLink>
                   
@@ -116,13 +118,18 @@ export default function Navbar() {
               </NavLink>
               )}
            </li>
+           {!user ? null :(
+           <NavLink to={`/users/update/${userId}`} className={setNavLinkClassName} end>
+            
+                Profile@{user}
+              </NavLink>)}
+           
               <li className="nav-item">
-                <a className="nav-link ">Bienvenido {user}</a>
+                <a className="nav-link"></a>
               </li>
-              <li className="nav-item">
-                <a className="nav-link "></a>
-              </li>
+              
             </ul>
+            
             <form className="d-flex" role="search">
               <input
                 className="form-control me-2"

@@ -15,6 +15,7 @@ import MisCompras from './components/MisCompras/MisCompras'
 import ReactYoutube from './components/ReactYoutube/ReactYoutube'
 
 import UpdateCursadas from './components/UpdateCursadas/UpdateCursadas'
+import UserUpdate from './UserUpdate/UserUpdate'
 
 
 function App() {
@@ -33,11 +34,11 @@ function App() {
           <Route path="/cursadas/search/:search" element={<CursadaSearch />} />
           <Route path="/cursadas/cursadacomprada/:id" element={<CursadaComprada/>} />
           <Route path="/users/login" element={<Login />} />
-          <Route path="/users/registeruser" element={<RegisterUser />} />   
+          <Route path="/users/register" element={<RegisterUser />} />   
           <Route path="/users/userpanel" element={<UserPanel />} />
           <Route path="/users/adminpanel" element={<AdminPanel />} />
           <Route path="/users/userpanel/miscompras" element={<MisCompras />} />
-        
+          <Route path="/users/update/:id" element={<UserUpdate />} />
           
           
         </Routes>

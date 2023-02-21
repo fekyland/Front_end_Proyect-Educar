@@ -21,6 +21,8 @@ UserService.getById = async (token) => {
 
   return await axios.get(apiUrl, config)
 }
+
+
 UserService.buyCursada = async (userId,Id,contenido) => {
   try {
     const apiURL = `${environment.BASE_API_URL}/users/${userId}/rent/${Id}`

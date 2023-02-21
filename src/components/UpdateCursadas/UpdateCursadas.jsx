@@ -3,17 +3,16 @@ import { validateCursadaFormValues } from '../../_helpers/form-utilities'
 import CursadaService from '../../_services/CursadaService.js'
 import { useState,useEffect } from 'react';
 import { useParams } from 'react-router-dom';
-import { id } from 'date-fns/locale';
-import { object } from 'prop-types';
+
 
 
 
 const userMail = 'userMail';
 const userName = 'userName';
 const localMail = localStorage.getItem(userMail)
-console.log(userMail)
+console.log(localMail)
 const localName = localStorage.getItem(userName)
-
+console.log(localName)
 
 export default function UpdateCursadas() {
  const { id } = useParams()
@@ -75,7 +74,6 @@ export default function UpdateCursadas() {
 
   const register = async (contenido) => {
     try {
-        console.log("entre a actualizar")
       const res = await CursadaService.updateData(contenido)
       console.log(res.data)
       navigate('/users/userpanel')
