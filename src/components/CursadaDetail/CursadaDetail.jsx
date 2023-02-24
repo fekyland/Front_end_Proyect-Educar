@@ -4,7 +4,7 @@ import CursadaService from '../../_services/CursadaService.js'
 import './CursadaDetail.scss'
 import { useParams } from 'react-router-dom'
 import { useNavigate } from 'react-router-dom'
-
+import TokenStorageService from '../../_services/TokenStorageService.js'
 
 
 export default function CursadaDetail() {
@@ -14,8 +14,9 @@ export default function CursadaDetail() {
   const { id } = useParams()
   const usuario = 'userId'
   const UserId = localStorage.getItem(usuario)
-
-
+  const token = TokenStorageService.getToken()
+  console.log(token)
+   console.log(id)
 
   useEffect(() => {
     getSingleCursada()
@@ -33,14 +34,18 @@ export default function CursadaDetail() {
   }
   const handleComprar = () => {
     console.log("comprando..")
-      buyCursada(UserId, id)
+      buyCursada(id,UserId,token)
       navigate(`/cursadas/cursadacomprada/${cursada._id}`)
     
   }
-  const buyCursada = async () => {
+  
+  console.log(UserId)
+  console.log(id)
+  const buyCursada = async (id,UserId,token) => {
+    
     try {
-      const res = await CursadaService.buyCursada(id, UserId)
-      console.log('compra exitoso', res.data)
+      const res = await CursadaService.buyCursada( id,UserId,token)
+      console.log('compra exitosa', res.data)
     } catch (error) {
       console.log(error.message || error)
     }
@@ -198,7 +203,7 @@ export default function CursadaDetail() {
                               <div className="d-flex justify-content-between">
                                
                                 <button onClick={handleComprar}>
-                                  Checkout{''}
+                                  Buy{''}
                                   <i className="fas fa-long-arrow-alt-right ms-2"></i>
                                 </button>
                               </div>

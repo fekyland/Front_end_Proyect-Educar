@@ -28,7 +28,7 @@ console.log(user)
   return (
     <div className="cursada-list">
       <div className="container pt-5 pb-5 ">
-        <h1 className="h1  mb-5 ">Cursadas</h1>
+        <h1 className="h1  mb-5 ">Create and learn...</h1>
 
         <div className="d-flex flex-wrap justify-content-center gap-5 mb-5">
           {cursadas.length > 0 &&

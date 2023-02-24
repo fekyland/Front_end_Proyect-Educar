@@ -3,6 +3,8 @@ import AuthService from '../_services/AuthService'
 import { useState, useEffect } from 'react'
 import { useParams } from 'react-router-dom'
 import { validateLoginFormValues } from '../_helpers/form-utilities'
+import TokenStorageService from '../_services/TokenStorageService'
+
 
 export default function UserUpdate() {
   const userMail = 'userMail'
@@ -11,7 +13,7 @@ export default function UserUpdate() {
   console.log(localMail)
   const localName = localStorage.getItem(userName)
   console.log(localName)
-
+  const token = TokenStorageService.getToken()
   const { id } = useParams()
   const navigate = useNavigate()
 
@@ -39,14 +41,14 @@ export default function UserUpdate() {
   const verificacion = (contenido) => {
     if (Object.keys(formErrors).length == 0 && isSubmit) {
       console.log('Actualizando user...')
-      register(contenido)
+      register(contenido,token)
     }
   }
 
-  const register = async (contenido) => {
+  const register = async (contenido,token) => {
     try {
       console.log('entre a actualizar')
-      const res = await AuthService.updateData(contenido)
+      const res = await AuthService.updateData(contenido,token)
       console.log(res.data)
       console.log('cerrando cesion')
       localStorage.clear()

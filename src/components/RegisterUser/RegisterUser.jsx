@@ -39,6 +39,7 @@ export default function RegisterUser() {
   }
 
   const register = async (credentials) => {
+    console.log(credentials)
     try {
       const res = await AuthService.register(credentials)
       console.log(res.data)

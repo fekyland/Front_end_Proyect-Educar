@@ -9,6 +9,8 @@ import { useState, useEffect } from 'react'
 import './Cursada.scss'
 import CursadaService from '../../_services/CursadaService.js'
 import YouTubePlayer from '../YoutubePlayer/YoutubePlayer'
+import TokenStorageService from '../../_services/TokenStorageService.js'
+
 
 function Cursada({ cursada }) {
   const navigate = useNavigate()
@@ -18,6 +20,7 @@ function Cursada({ cursada }) {
   const usuario = 'userId'
   const UserId = localStorage.getItem(usuario)
   const userState = useSelector((state) => state.authReducer)
+  const token = TokenStorageService.getToken()
 
   const [comprada, setComprada] = useState({})
   useEffect(() => {
@@ -27,7 +30,7 @@ function Cursada({ cursada }) {
     try {
       console.log(id)
       console.log(UserId)
-      const res = await CursadaService.checkCursada(id, UserId)
+      const res = await CursadaService.checkCursada(id,UserId,token)
       console.log(res.data.results)
       setComprada(res.data.results)
     } catch (error) {

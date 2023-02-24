@@ -3,21 +3,22 @@ import { useState,useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { validateCursadaFormValues } from '../../_helpers/form-utilities'
 import CursadaService from '../../_services/CursadaService.js'
+import TokenStorageService from '../../_services/TokenStorageService'
 
 
-
-
+const token = TokenStorageService.getToken()
+console.log(token)
 
 export default function RegisterCursada() {
   
-  
+ 
  
   const userName = 'userName'
   const user = localStorage.getItem(userName)
   
   const userMail = 'userMail'
   const mail = localStorage.getItem(userMail)
-
+  
 
 
   const initialValues = {
@@ -28,6 +29,9 @@ export default function RegisterCursada() {
   }
   // hooks
   const navigate = useNavigate()
+  
+
+
 
   const [formValues, setFormValues] = useState(initialValues)
   const [formErrors, setFormErrors] = useState({})
@@ -55,8 +59,9 @@ export default function RegisterCursada() {
   }
 
   const register = async (contenido) => {
+    console.log(token)
     try {
-      const res = await CursadaService.register(contenido)
+      const res = await CursadaService.register(token,contenido)
       console.log(res.data)
       navigate('/users/userpanel')
     } catch (error) {
@@ -85,7 +90,7 @@ export default function RegisterCursada() {
     <div>
       <div className="container pt-5 col-lg-3">
         <div>
-          <h1>CREAR CURSADA</h1>
+          <h1>Show me what you got</h1>
         </div>
         <form className="text-start" noValidate onSubmit={handleSubmit}>
         <div className="mb-3">

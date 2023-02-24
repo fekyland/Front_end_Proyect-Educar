@@ -50,8 +50,8 @@ export default function Navbar() {
 
   return (
     <div className=''>
-      <nav className="navbar navbar-expand-lg  bg-white bg-gradient  fs-6 ">
-        <div className="container-fluid ">
+      <nav className="navbar navbar-expand-lg bg-white  fs-6 ">
+        <div className="container-fluid   ">
           <a className="navbar-brand" href="/cursadas">
             <img
               src={logo}

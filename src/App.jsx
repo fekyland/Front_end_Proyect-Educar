@@ -16,6 +16,7 @@ import ReactYoutube from './components/ReactYoutube/ReactYoutube'
 
 import UpdateCursadas from './components/UpdateCursadas/UpdateCursadas'
 import UserUpdate from './UserUpdate/UserUpdate'
+import Footer from './components/Footer/Footer'
 
 
 function App() {
@@ -42,6 +43,7 @@ function App() {
           
           
         </Routes>
+        <Footer/>
       </BrowserRouter>
     </div>
   )

@@ -3,7 +3,7 @@ import { validateCursadaFormValues } from '../../_helpers/form-utilities'
 import CursadaService from '../../_services/CursadaService.js'
 import { useState,useEffect } from 'react';
 import { useParams } from 'react-router-dom';
-
+import TokenStorageService from '../../_services/TokenStorageService';
 
 
 
@@ -17,7 +17,7 @@ console.log(localName)
 export default function UpdateCursadas() {
  const { id } = useParams()
  console.log(id)
-
+ const token = TokenStorageService.getToken()
  
  
   // hooks
@@ -68,13 +68,13 @@ export default function UpdateCursadas() {
   const verificacion = (contenido) => {
     if (Object.keys(formErrors).length == 0 && isSubmit) {
       console.log('Registrando curso...')
-      register(contenido)
+      register(token,contenido)
     }
   }
 
-  const register = async (contenido) => {
+  const register = async (token,contenido) => {
     try {
-      const res = await CursadaService.updateData(contenido)
+      const res = await CursadaService.updateData(contenido,token)
       console.log(res.data)
       navigate('/users/userpanel')
     } catch (error) {

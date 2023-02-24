@@ -22,8 +22,14 @@ AuthService.register = async (user) => {
   })
 }
 
-AuthService.updateData = async (contenido) => {
+AuthService.updateData = async (contenido,token) => {
+  console.log(token)
+  console.log(contenido)
   const ApiUrl = `${environment.BASE_API_URL}`
+  const config = {
+    headers: { Authorization: `Bearer ${token}` },
+  }
+
   return await axios.put(ApiUrl + '/auth/updateuser', {
     //hago un post a register con un body de usuario mail y password
     id: contenido.id,
@@ -31,7 +37,8 @@ AuthService.updateData = async (contenido) => {
     email: contenido.email,
     password:contenido.password
     
-  })
+  },config)
+
 }
 
 export default AuthService

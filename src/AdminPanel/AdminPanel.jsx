@@ -38,7 +38,7 @@ export default function Admin() {
     }
   }
   const getAllCursadas = async () => {
-    const res = await CursadaService.getAllCursadas()
+    const res = await CursadaService.getAllCursadas(token)
     try {
       console.log('res.data.results', res.data.results)
       setCursadas(res.data.results)
@@ -52,8 +52,8 @@ export default function Admin() {
     console.log(users)
   }
 
-const handleDeleteCursada = async (cursadaToDelete) => {
-    const res = await CursadaService.deleteCursadaById(cursadaToDelete)
+const handleDeleteCursada = async (cursadaToDelete,token) => {
+    const res = await CursadaService.deleteCursadaById(cursadaToDelete,token)
     console.log(res)
     await getAllCursadas(token)
     console.log(cursadas)

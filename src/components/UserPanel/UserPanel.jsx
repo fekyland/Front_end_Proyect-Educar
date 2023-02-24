@@ -12,7 +12,7 @@ export default function UserPanel() {
   console.log(typeof UserId) 
   const mail = 'userMail'
   const email = localStorage.getItem(mail)
- 
+  const token = TokenStorageService.getToken()
  console.log(typeof email)
  
  
@@ -33,7 +33,7 @@ export default function UserPanel() {
 
   const findByEmail = async () => {
     try {
-      const res = await CursadaService.findByEmail(email)
+      const res = await CursadaService.findByEmail(email,token)
       setMisCursadas(res.data.data)
     } catch (error) {
       console.log(error.message || error)
@@ -43,7 +43,7 @@ export default function UserPanel() {
 const findBuyersById = async () => {
   try {
     console.log(UserId)
-    const res = await CursadaService.findBuyersById(UserId)
+    const res = await CursadaService.findBuyersById(UserId,token)
     setComproCursada(res.data.results)
 
   } catch (error) {
