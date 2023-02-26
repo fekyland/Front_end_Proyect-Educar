@@ -45,7 +45,7 @@ function Cursada({ cursada }) {
   const getYear = (date) => format(Date.parse(date), 'yyyy')
 
   return (
-   
+    <div className="">
       <div className="card  text-start movie-card " style={{ width: '13rem' }}>
         <div className="z-2 position-absolute p-5 rounded-3 "></div>
         <YouTubePlayer videoId={cursada.video} width="210" height="200" />
@@ -150,6 +150,7 @@ function Cursada({ cursada }) {
         </div>
       </div>
     
+    </div>
   )
 }
 
