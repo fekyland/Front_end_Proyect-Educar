@@ -86,7 +86,6 @@ const handleDeleteCursada = async (cursadaToDelete,token) => {
             <div className="row ">
               <div className="col">User: {user.name}</div>
               <div className="col">Mail: {user.email}</div>
-              <div className="col">Role: {user.role}</div>
               <div className="col admin-buttons">
                 <button
                   

@@ -73,10 +73,10 @@ export default function CursadaDetail() {
                         </h5>
                         <hr />
 
-                        <div className="d-flex justify-content-between align-items-center mb-4 ">
+                        <div className="selector">
                           <div>
                             <p className="mb-1  ">
-                            <div className="embed-responsive embed-responsive-16by9">
+                            <div className="">
                               <iframe
                                 src={cursada.video}
                                 title="YouTube video player"
@@ -85,9 +85,13 @@ export default function CursadaDetail() {
                                 allowfullscreen
                                 style={{ width: '100%', height: '400px' }}
                               ></iframe>
+                              <hr />
+                              <p className="mb-0">{cursada.description}</p>
+                              <hr />
                               </div>
+                              
                             </p>
-                            <p className="mb-0">{cursada.description}</p>
+                            
                           </div>
                         
                         </div>

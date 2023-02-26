@@ -25,8 +25,9 @@ export default function CursadaComprada() {
   }
   return (
     <div>
-      <div class="card ">
-        <div class="embed-responsive embed-responsive-16by9 ">
+      <hr></hr>
+      <div class="card border border-0">
+        <div class="selector ">
           <iframe
             width="100%"
             height="600"
@@ -36,7 +37,9 @@ export default function CursadaComprada() {
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
             allowfullscreen
           ></iframe>
+          <hr></hr>
         </div>
+        
         <div class="card-body">
           <h5 class="card-title ">{cursada.title}</h5>
           <p class="card-text">{cursada.description}</p>
