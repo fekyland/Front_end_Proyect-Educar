@@ -62,7 +62,7 @@ function Cursada({ cursada }) {
 
           {UserId ? (
             <>
-              <div class="">
+              <div class="characters-detail">
                 <div class="btn-group">
                   {email === `${cursada.email}` && comprada === null && (
                     <button

@@ -25,3 +25,11 @@
 .release-date {
     color: #7e7e7e;
 }
+.characters-detail {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 10%;
+    border: 2px;
+    border-color: solid;
+}
