@@ -26,7 +26,7 @@ Bootstrap: A CSS framework used for styling the user interface.
 
 Live demo:
 
-https://front-end-proyect-educar-qzdzr0cl3-fekyland.vercel.app/cursadas
+https://front-end-proyect-educar.vercel.app/
 
 login user
 user@user.com
